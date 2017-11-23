@@ -16,7 +16,7 @@ class Desktop extends Window{
     this.setState({
       data:{
           items:data.Desktop,
-          preObj:{}
+          preObj:null
         }
       });
   }

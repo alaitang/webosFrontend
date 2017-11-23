@@ -9,7 +9,7 @@ class Window extends Component{
       this.state = {
         data: {
           items:[],
-          preObj:{}
+          preObj:null
         }
       };
     }
@@ -25,7 +25,9 @@ class Window extends Component{
   }
 
   goback(){
-    this.setState({data:this.state.data.preObj});
+    if (this.state.data.preObj) {
+      this.setState({data:this.state.data.preObj});
+    }
   }
 
   render(){
@@ -39,7 +41,7 @@ class Window extends Component{
     return (
       <div className="container">
         <div className="toolbar">
-          <i onClick={this.goback.bind(this)} class="fa fa-arrow-left font-2 btn" aria-hidden="true"></i>
+          <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
           </div>
         <div>{currentItems}</div>
       </div>

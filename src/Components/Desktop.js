@@ -1,15 +1,10 @@
 import React,{Component} from 'react';
-import Folder from './Folder';
-import File from './File';
+import Window from './Window';
 
-class Desktop extends Component{
+class Desktop extends Window{
 
     constructor(props){
       super(props);
-      this.state = {
-        systemItems:[],
-        data:[]
-      };
       fetch('http://localhost:4000/user').then(this.getResponse.bind(this)).then(this.handleResponse.bind(this));
     }
 
@@ -18,26 +13,17 @@ class Desktop extends Component{
   }
 
   handleResponse(data){
-      let currentItems = data.Desktop.map((item)=>{
-        if(item.type=="folder"){
-          return (<Folder {...item}/>);
-        }else{
-          return (<File {...item}/>);
+    this.setState({
+      data:{
+          items:data.Desktop,
+          preObj:{}
         }
-
       });
-      console.log(data.Desktop);
-      this.setState({systemItems:currentItems,data:data});
   }
 
   render(){
-
-    return (
-      <div className="container">
-        <div>{this.state.systemItems}</div>
-        <div className=""></div>
-      </div>
-    );
+    const obj = super.render();
+    return obj;
   }
 }
 

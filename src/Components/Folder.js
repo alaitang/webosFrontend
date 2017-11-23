@@ -3,8 +3,16 @@ import SystemItem from './SystemItem';
 
 class Folder extends SystemItem{
 
+  constructor(props){
+    super(props);
+  }
+
+  processClassName(){
+    return "fa fa-folder font-3";
+  }
+
   render(){
-    let newProps = {...this.props};
+    console.log(this.iconMapping);
     return super.render();
   }
 }

@@ -3,8 +3,10 @@ import SystemItem from './SystemItem';
 
 class File extends SystemItem{
 
+    processClassName(){
+      return "fa font-3 fa-file";
+    }
   render(){
-    let newProps = {...this.props};
     return super.render();
   }
 }

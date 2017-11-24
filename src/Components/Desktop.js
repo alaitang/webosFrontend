@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import Window from './Window';
+import Header from './Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Desktop extends Window{
 
@@ -17,13 +19,21 @@ class Desktop extends Window{
       data:{
           items:data.Desktop,
           preObj:null
-        }
-      });
+        },
+        rootData:data.Desktop
+      }
+    );
   }
 
   render(){
     const obj = super.render();
-    return obj;
+    return (
+      <div>
+        <Header />
+        {obj}
+        <footer>
+        </footer>
+    </div>);
   }
 }
 

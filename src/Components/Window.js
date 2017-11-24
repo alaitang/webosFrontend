@@ -43,7 +43,10 @@ class Window extends Component{
         <div className="toolbar">
           <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
           </div>
-        <div>{currentItems}</div>
+        <div className="row">
+            <div className="col-lg-9">{currentItems}</div>
+            <div className="col-lg-3"></div>
+        </div>
       </div>
     );
   }

@@ -30,7 +30,7 @@ class Window extends Component{
       this.setState({data:this.state.data.preObj});
     }
   }
-  
+
   handleContextMenu(e){
     this.contextMenu.setPostion(e.pageY+"px",e.pageX+"px");
     this.contextMenu.setActiveStatus(true);
@@ -46,7 +46,7 @@ class Window extends Component{
       }
     });
     return (
-      <div className="container" onContextMenu={this.handleContextMenu.bind(this)}>
+      <div className="container Window" onContextMenu={this.handleContextMenu.bind(this)}>
         <ContextMenu ref={(menu)=>this.contextMenu = menu} />
         <div className="toolbar">
           <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>

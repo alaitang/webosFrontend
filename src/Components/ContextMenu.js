@@ -47,7 +47,11 @@ class ContextMenu extends Component{
   render(){
     return (
       <div ref={(curr)=>this.node = curr}  className={"ContextMenu "+(this.state.isActived ? "active":"") } style={this.state.position}>
-      <h1 >this is context</h1>
+      <ul>
+        <li>Create Folder</li>
+          <li>Create File</li>
+            <li>Refresh</li>
+      </ul>
     </div>);
   }
 }

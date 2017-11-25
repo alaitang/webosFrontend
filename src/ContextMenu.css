@@ -1,12 +1,30 @@
 .ContextMenu{
   position: fixed;
-  background-color: red;
-  color: yellow;
+  background-color: white;
   display: none;
   top:10px;
   left:20px;
   z-index:1000;
+  width: 100px;
+  box-shadow: 0 0 0.3em rgb(102, 102, 153);
+  font-size: 12px;
 }
+
+.ContextMenu ul{
+  list-style-type: none;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+
+.ContextMenu ul li{
+  padding-left: 5px;
+  padding-right:5px;
+  cursor: pointer;
+}
+.ContextMenu ul li:hover{
+  background-color: rgb(240, 240, 245);
+}
+
 
 .active{
   display: block;

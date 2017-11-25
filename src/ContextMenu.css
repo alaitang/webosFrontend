@@ -1,0 +1,13 @@
+.ContextMenu{
+  position: fixed;
+  background-color: red;
+  color: yellow;
+  display: none;
+  top:10px;
+  left:20px;
+  z-index:1000;
+}
+
+.active{
+  display: block;
+}

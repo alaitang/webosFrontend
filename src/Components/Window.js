@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Folder from './Folder';
 import File from './File';
+import ContextMenu from './ContextMenu';
 
 class Window extends Component{
 
@@ -29,6 +30,12 @@ class Window extends Component{
       this.setState({data:this.state.data.preObj});
     }
   }
+  
+  handleContextMenu(e){
+    this.contextMenu.setPostion(e.pageY+"px",e.pageX+"px");
+    this.contextMenu.setActiveStatus(true);
+    e.preventDefault();
+  }
 
   render(){
     let currentItems = this.state.data.items.map((item)=>{
@@ -39,7 +46,8 @@ class Window extends Component{
       }
     });
     return (
-      <div className="container">
+      <div className="container" onContextMenu={this.handleContextMenu.bind(this)}>
+        <ContextMenu ref={(menu)=>this.contextMenu = menu} />
         <div className="toolbar">
           <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
           </div>

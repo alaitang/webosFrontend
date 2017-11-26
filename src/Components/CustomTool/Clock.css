@@ -1,0 +1,44 @@
+.Board{
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 0.3em;
+  border-color: black;
+  width: 200px;
+  height: 200px;
+}
+
+.Board .Hand{
+  background-color: black;
+  margin: 0px;
+  transform: translate(100px,100px);
+  transform-origin:left;
+  /*border: none;*/
+}
+
+.Board .Center{
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 0.45em;
+  border-color: black;
+
+  position: absolute;
+  top:  100px;
+  left: 110px;
+}
+
+.Board hr.Hand.Minute{
+  width: 35%;
+  height: 1px;
+  transform: translate(100px,100px) rotate(60deg);
+}
+
+.Board hr.Hand.Hour{
+  height: 3px;
+  width: 30%;
+  transform: translate(100px,100px) rotate(30deg);
+}
+
+.Board hr.Hand.Second{
+  width: 40%;
+  transform: translate(100px,100px) rotate(90deg);
+}

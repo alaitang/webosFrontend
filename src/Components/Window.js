@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Folder from './Folder';
 import File from './File';
 import ContextMenu from './ContextMenu';
+import Clock from './CustomTool/Clock';
 
 class Window extends Component{
 
@@ -52,8 +53,10 @@ class Window extends Component{
           <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
           </div>
         <div className="row">
-            <div className="col-lg-9">{currentItems}</div>
-            <div className="col-lg-3"></div>
+            <div className="col-lg-10">{currentItems}</div>
+            <div className="col-lg-2">
+            <Clock />
+            </div>
         </div>
       </div>
     );

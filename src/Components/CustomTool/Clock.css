@@ -42,3 +42,123 @@
   width: 40%;
   transform: translate(100px,100px) rotate(90deg);
 }
+
+div.NumberBoard{
+  margin-top: 20px;
+}
+
+div.NumberBoard > div{
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 4px;
+}
+div.NumberBoard > div:first{
+  padding-left: 0px;
+}
+
+div.Number{
+
+  width: 20px;
+  float: left;
+}
+
+div.NumberBlock{
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+  border-collapse: separate;
+}
+
+.NumberBoard .dotSplit{
+  width: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: center;
+  float: left;
+}
+
+div.NumberBlock.First{
+  border-bottom-width: 2px;
+}
+div.NumberBlock.Second{
+  border-top-width: 2px;
+}
+
+
+div.Number.One > .First{
+  border-top-color: white;
+  border-left-color: white;
+  border-bottom-color: white;
+}
+
+div.Number.One > .Second{
+  border-top-color: white;
+  border-left-color: white;
+  border-bottom-color: white;
+}
+
+div.Number.Two > .First{
+  border-left-color: white;
+}
+
+div.Number.Two > .Second{
+  border-right-color: white;
+}
+
+
+div.Number.Three > .First{
+  border-left-color: white;
+}
+
+div.Number.Three > .Second{
+  border-left-color: white;
+}
+
+div.Number.Four > .First{
+  border-top-color: white;
+}
+
+div.Number.Four > .Second{
+  border-left-color: white;
+    border-bottom-color: white;
+}
+
+div.Number.Five > .First{
+  border-right-color: white;
+}
+
+div.Number.Five > .Second{
+  border-left-color: white;
+}
+
+div.Number.Six > .First{
+  border-right-color: white;
+}
+
+div.Number.Seven > .First{
+  border-left-color: white;
+    border-bottom-color: white;
+}
+
+div.Number.Seven > .Second{
+  border-top-color: white;
+    border-left-color: white;
+      border-bottom-color: white;
+}
+
+
+div.Number.Nine > .Second{
+    border-left-color: white;
+}
+
+
+div.Number.Zero > .First{
+    border-bottom-color: white;
+}
+
+div.Number.Zero > .Second{
+  border-top-color: white;
+}

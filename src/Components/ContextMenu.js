@@ -45,12 +45,13 @@ class ContextMenu extends Component{
 
 
   render(){
+    let menuItems = this.props.menuItems.map(n=>{
+      return (<li onClick={n.handleClick}>{n.label}</li>);
+    });
     return (
       <div ref={(curr)=>this.node = curr}  className={"ContextMenu "+(this.state.isActived ? "active":"") } style={this.state.position}>
       <ul>
-        <li>Create Folder</li>
-          <li>Create File</li>
-            <li>Refresh</li>
+        {menuItems}
       </ul>
     </div>);
   }

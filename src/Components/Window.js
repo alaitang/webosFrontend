@@ -3,6 +3,8 @@ import Folder from './Folder';
 import File from './File';
 import ContextMenu from './ContextMenu';
 import Clock from './CustomTool/Clock';
+import ContextMenuItem from '../Models/ContextMenuItem';
+import uuidv4 from 'uuid/v4';
 
 class Window extends Component{
 
@@ -14,6 +16,8 @@ class Window extends Component{
           preObj:null
         }
       };
+      this.handleMenuClick = this.handleMenuClick.bind(this);
+
     }
 
   handleOpenFolder(data){
@@ -38,17 +42,65 @@ class Window extends Component{
     e.preventDefault();
   }
 
+  handleMenuClick(type){
+    switch (type) {
+      case "folder":
+        var newItem = {
+          "id":uuidv4(),
+          "name":"folder_name",
+          "type":"folder",
+          "key":uuidv4(),
+          "items":[],
+          "isNew":true
+        };
+        var newList = [...this.state.data.items,newItem];
+        this.setState({
+          data:{
+            items:newList
+          }
+        });
+        break;
+      case "file":
+        var newItem = {
+          "id":uuidv4(),
+          "name":"file_name",
+          "type":"file",
+          "key":uuidv4(),
+          "items":[],
+          "isNew":true
+        };
+        var newList = [...this.state.data.items,newItem];
+        this.setState({
+          data:{
+            items:newList
+          }
+        });
+        break;
+      default:
+
+    }
+    this.contextMenu.setActiveStatus(false);
+  }
+
   render(){
+
     let currentItems = this.state.data.items.map((item)=>{
       if(item.type=="folder"){
-        return (<Folder {...item} handleOpenFolder={this.handleOpenFolder.bind(this)}/>);
+        return (<Folder {...item} isNew={item.isNew} handleOpenFolder={this.handleOpenFolder.bind(this)}/>);
       }else{
-        return (<File {...item} handleOpenFolder={this.handleOpenFolder.bind(this)}/>);
+        return (<File {...item} isNew={item.isNew} handleOpenFolder={this.handleOpenFolder.bind(this)}/>);
       }
     });
+
+    const menuList = [
+      new ContextMenuItem("Create Folder",()=>{this.handleMenuClick("folder")}),
+      new ContextMenuItem("Create File",()=>{this.handleMenuClick("file")}),
+      new ContextMenuItem("Refresh",()=>{this.handleMenuClick("refresh")})
+    ];
+
     return (
       <div className="container Window" onContextMenu={this.handleContextMenu.bind(this)}>
-        <ContextMenu ref={(menu)=>this.contextMenu = menu} />
+        <ContextMenu ref={(menu)=>this.contextMenu = menu} menuItems={menuList} />
         <div className="toolbar">
           <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
           </div>

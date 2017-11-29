@@ -7,7 +7,15 @@ class Desktop extends Window{
 
     constructor(props){
       super(props);
-      fetch('http://localhost:4000/user').then(this.getResponse.bind(this)).then(this.handleResponse.bind(this));
+      this.getResponse = this.getResponse.bind(this);
+      this.handleResponse = this.handleResponse.bind(this);
+      fetch('http://localhost:4000/userinfo?userid=5a1b6f1fe85669426c3e18aa')
+      .then(this.getResponse)
+      .then((data)=>{
+        fetch('http://localhost:4000/folder?userid=5a1b6f1fe85669426c3e18aa')
+        .then(this.getResponse)
+        .then(this.handleResponse);
+      });
     }
 
   getResponse(response){
@@ -17,10 +25,10 @@ class Desktop extends Window{
   handleResponse(data){
     this.setState({
       data:{
-          items:data.Desktop,
+          items:data.data,
           preObj:null
         },
-        rootData:data.Desktop
+        rootData:data.data
       }
     );
   }

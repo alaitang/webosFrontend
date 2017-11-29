@@ -17,7 +17,6 @@ class Window extends Component{
         }
       };
       this.handleMenuClick = this.handleMenuClick.bind(this);
-
     }
 
   handleOpenFolder(data){

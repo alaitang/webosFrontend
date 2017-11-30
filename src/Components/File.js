@@ -10,7 +10,7 @@ class File extends SystemItem{
     handleClick(e){
       alert("TODO: open file");
     }
-    
+
     render(){
       return super.render();
     }

@@ -8,7 +8,7 @@ class Folder extends SystemItem{
   }
 
   handleClick(e){
-    this.state.item.handleOpenFolder(this.state.item);
+    this.state.item.handleOpenFolder(this.state.item.id);
   }
 
   render(){

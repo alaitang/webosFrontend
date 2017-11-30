@@ -13,25 +13,51 @@ class Window extends Component{
       this.state = {
         data: {
           items:[],
-          preObj:null
-        }
+          folderid:""
+        },
+        parentFolderId:""
       };
       this.handleMenuClick = this.handleMenuClick.bind(this);
     }
 
-  handleOpenFolder(data){
-      let preObj = this.state.data;
-      this.setState({
-        data:{
-            items:data.items,
-            preObj:preObj
-          }
-        });
+    loadItems(folderid){
+
+      this.getResponse = this.getResponse.bind(this);
+      this.handleResponse = this.handleResponse.bind(this);
+      fetch('http://localhost:4000/userinfo?userid=5a1b6f1fe85669426c3e18aa')
+      .then(this.getResponse)
+      .then((data)=>{
+          fetch('http://localhost:4000/folder?userid=5a1b6f1fe85669426c3e18aa&folderid='+folderid)
+          .then(this.getResponse)
+          .then((data)=>{this.handleResponse(data,folderid)});
+      });
+    }
+
+      getResponse(response){
+        return response.json();
+      }
+
+      handleResponse(data,folderid){
+
+        var parentFolderId = this.state.data.folderid;
+
+        this.setState({
+          data:{
+              items:data.data,
+              folderid : folderid
+            },
+            parentFolderId : parentFolderId
+          });
+        console.log(this.state);
+      }
+
+  handleOpenFolder(folderid){
+      this.loadItems(folderid);
   }
 
   goback(){
-    if (this.state.data.preObj) {
-      this.setState({data:this.state.data.preObj});
+    if (this.state.parentFolderId != "") {
+      this.loadItems(this.state.parentFolderId);
     }
   }
 
@@ -101,7 +127,8 @@ class Window extends Component{
       <div className="container Window" onContextMenu={this.handleContextMenu.bind(this)}>
         <ContextMenu ref={(menu)=>this.contextMenu = menu} menuItems={menuList} />
         <div className="toolbar">
-          <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (this.state.data.preObj == null ? 'disabled' : '')} aria-hidden="true"></i>
+          <i onClick={this.goback.bind(this)} className={"fa fa-arrow-left font-2 btn "+ (
+            this.state.parentFolderId  ? '' : 'disabled')} aria-hidden="true"></i>
           </div>
         <div className="row">
             <div className="col-lg-10">{currentItems}</div>
